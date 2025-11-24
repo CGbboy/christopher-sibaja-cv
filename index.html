@@ -1,232 +1,151 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Christopher Sibaja Lara — CV</title>
-  <style>
-    :root{
-      --bg:#0b0b0b;         /* negro profundo */
-      --accent:#d92b2b;     /* rojo vivo */
-      --card:#111111;       /* card oscuro */
-      --muted:#e6e6e6;      /* texto claro */
-      --soft:#f4f4f4;       /* fondo claro */
-    }
-    /* Reset sencillo */
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family: "Segoe UI", Roboto, Arial, sans-serif;background:var(--soft);color:var(--muted);}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christopher Sibaja Lara - CV</title>
 
-    /* Sidebar fijo */
-    .sidebar{
-      position:fixed;
-      left:0;top:0;
-      width:240px;
-      height:100vh;
-      background:linear-gradient(180deg,var(--bg), #1a1a1a);
-      color:var(--muted);
-      padding:28px 16px;
-      box-shadow:4px 0 18px rgba(0,0,0,0.6);
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-    }
-    .brand{
-      text-align:center;
-      margin-bottom:6px;
-    }
-    .brand h1{
-      font-size:20px;
-      margin:0;
-      color:var(--accent);
-      letter-spacing:0.4px;
-    }
-    .brand p{margin:6px 0 0 0;font-size:12px;color:#cfcfcf}
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+        }
 
-    .nav-btn{
-      width:100%;
-      background:transparent;
-      border:2px solid rgba(255,255,255,0.06);
-      color:var(--muted);
-      padding:10px 12px;
-      border-radius:8px;
-      text-align:left;
-      cursor:pointer;
-      font-size:15px;
-      transition: all .18s ease;
-    }
-    .nav-btn:hover{
-      transform:translateX(6px);
-      background:linear-gradient(90deg, rgba(217,43,43,0.14), rgba(217,43,43,0.05));
-      border-color:rgba(217,43,43,0.6);
-      color:#fff;
-      box-shadow: 0 6px 18px rgba(217,43,43,0.08);
-    }
-    .nav-btn.active{
-      background: linear-gradient(90deg, rgba(217,43,43,0.22), rgba(217,43,43,0.06));
-      border-color: rgba(217,43,43,0.9);
-      color: #fff;
-      transform:translateX(4px);
-    }
+        header {
+            background: #111;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
 
-    /* Contenido principal */
-    .main{
-      margin-left:240px;
-      padding:36px;
-      min-height:100vh;
-    }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
 
-    .topbar{
-      background: linear-gradient(90deg,#111111, #0f0f0f);
-      color:var(--muted);
-      padding:28px;
-      border-radius:12px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      box-shadow:0 6px 20px rgba(0,0,0,0.25);
-    }
-    .title h2{margin:0;color:var(--accent);font-size:22px}
-    .title p{margin:6px 0 0 0;color:#d1d1d1;font-size:13px}
+        header .fecha {
+            margin-top: .3rem;
+            font-weight: 300;
+            color: #ff3b3b;
+            font-size: 1rem;
+        }
 
-    .card{
-      margin-top:20px;
-      background: linear-gradient(180deg, #0f0f0f, #141414);
-      padding:22px;
-      border-radius:12px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.5);
-      color:#eaeaea;
-    }
+        /* Menú horizontal */
+        nav {
+            background: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: .8rem 0;
+            flex-wrap: wrap;
+        }
 
-    h3{color:var(--accent); margin-top:0; margin-bottom:10px}
-    ul{line-height:1.8; padding-left:18px; color:#e2e2e2}
-    p{color:#d9d9d9}
+        nav button {
+            background: transparent;
+            border: 2px solid #ff3b3b;
+            padding: .6rem 1.2rem;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
 
-    /* Responsive: sidebar colapsa */
-    @media (max-width:900px){
-      .sidebar{position:relative;width:100%;height:auto;flex-direction:row;gap:8px;padding:12px;overflow:auto}
-      .main{margin-left:0;padding:18px}
-      .topbar{flex-direction:column;align-items:flex-start}
-      .nav-btn{font-size:14px;padding:8px 10px;border-radius:6px}
-    }
-  </style>
+        nav button:hover {
+            background: #ff3b3b;
+            color: white;
+        }
+
+        /* Contenido */
+        section {
+            display: none;
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        section.active {
+            display: block;
+        }
+
+        h3 {
+            border-left: 5px solid #ff3b3b;
+            padding-left: .5rem;
+            font-size: 1.3rem;
+        }
+    </style>
 </head>
+
 <body>
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar" role="navigation" aria-label="Navegación">
-    <div class="brand">
-      <h1>Christopher</h1>
-      <p>Currículum Vitae</p>
-    </div>
+<header>
+    <h1>Christopher Sibaja Lara</h1>
+    <p class="fecha">Actualizado: 23/11/2025</p>
+</header>
 
-    <button class="nav-btn active" data-target="datos">Datos Personales</button>
-    <button class="nav-btn" data-target="sobre">Sobre Mí</button>
-    <button class="nav-btn" data-target="formacion">Formación Académica</button>
-    <button class="nav-btn" data-target="experiencia">Experiencia Laboral</button>
-    <button class="nav-btn" data-target="adicional">Formaciones Adicionales</button>
+<nav>
+    <button onclick="showSection('datos')">Datos Personales</button>
+    <button onclick="showSection('sobre')">Sobre Mí</button>
+    <button onclick="showSection('academica')">Formación Académica</button>
+    <button onclick="showSection('experiencia')">Experiencia</button>
+    <button onclick="showSection('extra')">Formaciones Adicionales</button>
+</nav>
 
-    <!-- espacio flexible -->
-    <div style="flex:1"></div>
-
-    <div style="font-size:12px;color:#cfcfcf;text-align:center;padding-top:6px">
-      © 2025 • Christopher Sibaja
-    </div>
-  </aside>
-
-  <!-- CONTENIDO -->
-  <main class="main">
-    <div class="topbar">
-      <div class="title">
-        <h2>Christopher Sibaja Lara</h2>
-        <p>23- 11 — 2025</p>
-      </div>
-      <div class="contact">
-        <div style="font-size:14px;color:#ddd"><strong>Tel:</strong> 9381898541</div>
-        <div style="font-size:14px;color:#ddd"><strong>Email:</strong> sibajajuegos@gmail.com</div>
-      </div>
-    </div>
-
-    <!-- SECCIONES -->
-    <section id="datos" class="card active-section">
-      <h3>Datos Personales</h3>
-      <ul>
-        <li><strong>Nombre completo:</strong> Christopher Sibaja Lara</li>
+<section id="datos" class="active">
+    <h3>Datos Personales</h3>
+    <ul>
+        <li><strong>Nombre:</strong> Christopher Sibaja Lara</li>
         <li><strong>Edad:</strong> 19 años</li>
         <li><strong>Ciudad:</strong> Ciudad del Carmen, Campeche</li>
         <li><strong>Teléfono:</strong> 9381898541</li>
         <li><strong>Correo:</strong> sibajajuegos@gmail.com</li>
-      </ul>
-    </section>
+    </ul>
+</section>
 
-    <section id="sobre" class="card" style="display:none">
-      <h3>Sobre Mí</h3>
-      <p>
-        Soy una persona apasionada por aprender cosas nuevas cada día. Me esfuerzo por hacer las cosas
+<section id="sobre">
+    <h3>Sobre Mí</h3>
+    <p>
+        Soy una persona apasionada por aprender cosas nuevas cada día, me gusta hacer las cosas 
         de manera correcta y con dedicación. Disfruto enfrentar nuevos retos que me ayuden a crecer
-        profesional y personalmente. Me adapto bien al trabajo en equipo y aprendo rápido.
-      </p>
-    </section>
+        personal y profesionalmente.
+    </p>
+</section>
 
-    <section id="formacion" class="card" style="display:none">
-      <h3>Formación Académica</h3>
-      <ul>
+<section id="academica">
+    <h3>Formación Académica</h3>
+    <ul>
         <li><strong>Primaria:</strong> El Tesoro del Saber / Justo Sierra Méndez</li>
         <li><strong>Secundaria:</strong> Sor Juana Inés de la Cruz</li>
         <li><strong>Preparatoria:</strong> Centro de Estudios Arquímedes Acapulco A.C.</li>
-        <li><strong>Universidad:</strong> Universidad Autónoma Del Carmen (UNACAR) — Ingeniería Mecánica (Actualmente cursando)</li>
-      </ul>
-    </section>
+        <li><strong>Universidad:</strong> UNACAR – Ingeniería Mecánica (Cursando)</li>
+    </ul>
+</section>
 
-    <section id="experiencia" class="card" style="display:none">
-      <h3>Experiencia Laboral</h3>
-      <p>No cuento con experiencia laboral por el momento, pero estoy en búsqueda de oportunidades y dispuesto a aprender en prácticas o proyectos.</p>
-    </section>
+<section id="experiencia">
+    <h3>Experiencia Laboral</h3>
+    <p>No cuento con experiencia laboral por el momento.</p>
+</section>
 
-    <section id="adicional" class="card" style="display:none">
-      <h3>Formaciones Adicionales</h3>
-      <ul>
+<section id="extra">
+    <h3>Formaciones Adicionales</h3>
+    <ul>
         <li>Curso de Emprendimiento Ágil de Negocios</li>
         <li>Curso de Contabilidad Básica</li>
         <li>Curso de Soldadura Básica</li>
         <li>Curso de Electricidad Básica</li>
-      </ul>
-    </section>
+    </ul>
+</section>
 
-  </main>
+<script>
+function showSection(id) {
+    document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+}
+</script>
 
-  <script>
-    // comportamiento botones sidebar
-    const buttons = document.querySelectorAll('.nav-btn');
-    const sections = document.querySelectorAll('main section');
-
-    function setActiveButton(btn){
-      buttons.forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-    }
-
-    function showSectionById(id){
-      sections.forEach(s=>{
-        if(s.id === id){
-          s.style.display = 'block';
-        } else {
-          s.style.display = 'none';
-        }
-      });
-      // scroll to top of main content area on small screens
-      window.scrollTo({top:0,behavior:'smooth'});
-    }
-
-    buttons.forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const target = btn.getAttribute('data-target');
-        setActiveButton(btn);
-        showSectionById(target);
-      });
-    });
-
-    // Inicial: mostrar 'datos'
-    showSectionById('datos');
-  </script>
 </body>
 </html>
