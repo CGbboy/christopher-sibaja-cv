@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Christopher Sibaja Lara — CV</title>
+  <style>
+    :root{
+      --bg:#0b0b0b;         /* negro profundo */
+      --accent:#d92b2b;     /* rojo vivo */
+      --card:#111111;       /* card oscuro */
+      --muted:#e6e6e6;      /* texto claro */
+      --soft:#f4f4f4;       /* fondo claro */
+    }
+    /* Reset sencillo */
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family: "Segoe UI", Roboto, Arial, sans-serif;background:var(--soft);color:var(--muted);}
+
+    /* Sidebar fijo */
+    .sidebar{
+      position:fixed;
+      left:0;top:0;
+      width:240px;
+      height:100vh;
+      background:linear-gradient(180deg,var(--bg), #1a1a1a);
+      color:var(--muted);
+      padding:28px 16px;
+      box-shadow:4px 0 18px rgba(0,0,0,0.6);
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+    .brand{
+      text-align:center;
+      margin-bottom:6px;
+    }
+    .brand h1{
+      font-size:20px;
+      margin:0;
+      color:var(--accent);
+      letter-spacing:0.4px;
+    }
+    .brand p{margin:6px 0 0 0;font-size:12px;color:#cfcfcf}
+
+    .nav-btn{
+      width:100%;
+      background:transparent;
+      border:2px solid rgba(255,255,255,0.06);
+      color:var(--muted);
+      padding:10px 12px;
+      border-radius:8px;
+      text-align:left;
+      cursor:pointer;
+      font-size:15px;
+      transition: all .18s ease;
+    }
+    .nav-btn:hover{
+      transform:translateX(6px);
+      background:linear-gradient(90deg, rgba(217,43,43,0.14), rgba(217,43,43,0.05));
+      border-color:rgba(217,43,43,0.6);
+      color:#fff;
+      box-shadow: 0 6px 18px rgba(217,43,43,0.08);
+    }
+    .nav-btn.active{
+      background: linear-gradient(90deg, rgba(217,43,43,0.22), rgba(217,43,43,0.06));
+      border-color: rgba(217,43,43,0.9);
+      color: #fff;
+      transform:translateX(4px);
+    }
+
+    /* Contenido principal */
+    .main{
+      margin-left:240px;
+      padding:36px;
+      min-height:100vh;
+    }
+
+    .topbar{
+      background: linear-gradient(90deg,#111111, #0f0f0f);
+      color:var(--muted);
+      padding:28px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.25);
+    }
+    .title h2{margin:0;color:var(--accent);font-size:22px}
+    .title p{margin:6px 0 0 0;color:#d1d1d1;font-size:13px}
+
+    .card{
+      margin-top:20px;
+      background: linear-gradient(180deg, #0f0f0f, #141414);
+      padding:22px;
+      border-radius:12px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.5);
+      color:#eaeaea;
+    }
+
+    h3{color:var(--accent); margin-top:0; margin-bottom:10px}
+    ul{line-height:1.8; padding-left:18px; color:#e2e2e2}
+    p{color:#d9d9d9}
+
+    /* Responsive: sidebar colapsa */
+    @media (max-width:900px){
+      .sidebar{position:relative;width:100%;height:auto;flex-direction:row;gap:8px;padding:12px;overflow:auto}
+      .main{margin-left:0;padding:18px}
+      .topbar{flex-direction:column;align-items:flex-start}
+      .nav-btn{font-size:14px;padding:8px 10px;border-radius:6px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" role="navigation" aria-label="Navegación">
+    <div class="brand">
+      <h1>Christopher</h1>
+      <p>Currículum Vitae</p>
+    </div>
+
+    <button class="nav-btn active" data-target="datos">Datos Personales</button>
+    <button class="nav-btn" data-target="sobre">Sobre Mí</button>
+    <button class="nav-btn" data-target="formacion">Formación Académica</button>
+    <button class="nav-btn" data-target="experiencia">Experiencia Laboral</button>
+    <button class="nav-btn" data-target="adicional">Formaciones Adicionales</button>
+
+    <!-- espacio flexible -->
+    <div style="flex:1"></div>
+
+    <div style="font-size:12px;color:#cfcfcf;text-align:center;padding-top:6px">
+      © 2025 • Christopher Sibaja
+    </div>
+  </aside>
+
+  <!-- CONTENIDO -->
+  <main class="main">
+    <div class="topbar">
+      <div class="title">
+        <h2>Christopher Sibaja Lara</h2>
+        <p>Curriculum Vitae Profesional — Rojo & Negro</p>
+      </div>
+      <div class="contact">
+        <div style="font-size:14px;color:#ddd"><strong>Tel:</strong> 9381898541</div>
+        <div style="font-size:14px;color:#ddd"><strong>Email:</strong> sibajajuegos@gmail.com</div>
+      </div>
+    </div>
+
+    <!-- SECCIONES -->
+    <section id="datos" class="card active-section">
+      <h3>Datos Personales</h3>
+      <ul>
+        <li><strong>Nombre completo:</strong> Christopher Sibaja Lara</li>
+        <li><strong>Edad:</strong> 19 años</li>
+        <li><strong>Ciudad:</strong> Ciudad del Carmen, Campeche</li>
+        <li><strong>Teléfono:</strong> 9381898541</li>
+        <li><strong>Correo:</strong> sibajajuegos@gmail.com</li>
+      </ul>
+    </section>
+
+    <section id="sobre" class="card" style="display:none">
+      <h3>Sobre Mí</h3>
+      <p>
+        Soy una persona apasionada por aprender cosas nuevas cada día. Me esfuerzo por hacer las cosas
+        de manera correcta y con dedicación. Disfruto enfrentar nuevos retos que me ayuden a crecer
+        profesional y personalmente. Me adapto bien al trabajo en equipo y aprendo rápido.
+      </p>
+    </section>
+
+    <section id="formacion" class="card" style="display:none">
+      <h3>Formación Académica</h3>
+      <ul>
+        <li><strong>Primaria:</strong> El Tesoro del Saber / Justo Sierra Méndez</li>
+        <li><strong>Secundaria:</strong> Sor Juana Inés de la Cruz</li>
+        <li><strong>Preparatoria:</strong> Centro de Estudios Arquímedes Acapulco A.C.</li>
+        <li><strong>Universidad:</strong> Universidad Autónoma Del Carmen (UNACAR) — Ingeniería Mecánica (Actualmente cursando)</li>
+      </ul>
+    </section>
+
+    <section id="experiencia" class="card" style="display:none">
+      <h3>Experiencia Laboral</h3>
+      <p>No cuento con experiencia laboral por el momento, pero estoy en búsqueda de oportunidades y dispuesto a aprender en prácticas o proyectos.</p>
+    </section>
+
+    <section id="adicional" class="card" style="display:none">
+      <h3>Formaciones Adicionales</h3>
+      <ul>
+        <li>Curso de Emprendimiento Ágil de Negocios</li>
+        <li>Curso de Contabilidad Básica</li>
+        <li>Curso de Soldadura Básica</li>
+        <li>Curso de Electricidad Básica</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <script>
+    // comportamiento botones sidebar
+    const buttons = document.querySelectorAll('.nav-btn');
+    const sections = document.querySelectorAll('main section');
+
+    function setActiveButton(btn){
+      buttons.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    function showSectionById(id){
+      sections.forEach(s=>{
+        if(s.id === id){
+          s.style.display = 'block';
+        } else {
+          s.style.display = 'none';
+        }
+      });
+      // scroll to top of main content area on small screens
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    buttons.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const target = btn.getAttribute('data-target');
+        setActiveButton(btn);
+        showSectionById(target);
+      });
+    });
+
+    // Inicial: mostrar 'datos'
+    showSectionById('datos');
+  </script>
+</body>
+</html>
